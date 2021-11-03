@@ -1,9 +1,11 @@
 import { UserTypeORM } from "../user.typeorm";
-import { Column } from "typeorm";
+import { Column, Entity, Unique } from "typeorm";
 import { ProfessionIdTypeORM } from "../../professions/profession.id.typeorm";
 import { YearsOfExperienceTypeORM } from "./years.of.experience.typeorm";
 import { AvailabilityTypeORM } from "./availabilityTypeORM";
 
+@Entity('employees')
+@Unique('UQ_employees_user_id', ['user_id.value'])
 export class EmployeeTypeORM extends UserTypeORM {
   @Column(type => ProfessionIdTypeORM, {prefix: false})
   public professionId: ProfessionIdTypeORM;

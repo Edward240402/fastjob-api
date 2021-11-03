@@ -60,7 +60,8 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.password,
       registerEmployeeRequestDto.age,
       registerEmployeeRequestDto.professionId,
-      registerEmployeeRequestDto.yearsOfExperience
+      registerEmployeeRequestDto.yearsOfExperience,
+      "None"
     );
 
     const employeeId = await this.commandBus.execute(registerEmployeeCommand);

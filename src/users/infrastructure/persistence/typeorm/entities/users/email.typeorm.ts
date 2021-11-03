@@ -1,7 +1,7 @@
 import {Column} from "typeorm";
 
 export class EmailTypeORM {
-  @Column('varchar', {name: 'email', length: 25, nullable: false })
+  @Column('varchar', {name: 'email', length: 50, nullable: false })
   public email: string;
 
   private constructor(email: string) {
