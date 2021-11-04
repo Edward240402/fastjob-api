@@ -18,7 +18,6 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
       age,
       rate,
       number_of_rates,
-      profession_id,
       years_of_experience,
       availability
      FROM 
@@ -38,7 +37,6 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
       employeeDto.age = ormEmployee.age;
       employeeDto.rate = ormEmployee.rate;
       employeeDto.numberOfRates = ormEmployee.numberOfRates;
-      employeeDto.professionId = ormEmployee.professionId;
       employeeDto.yearsOfExperience = ormEmployee.yearsOfExperience;
       employeeDto.availability = ormEmployee.availability;
     });

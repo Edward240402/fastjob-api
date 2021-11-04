@@ -1,15 +1,14 @@
-import { UserIdTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/user.id.typeorm";
-import { NameTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/name.typeorm";
-import { EmailTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/email.typeorm";
-import { PasswordTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/password.typeorm";
-import { AgeTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/age.typeorm";
-import { RateTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/rate.typeorm";
-import { NumberOfRatesTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/number.of.rates.typeorm";
+import { UserIdTypeORM } from "../../infrastructure/persistence/typeorm/entities/user.id.typeorm";
+import { NameTypeORM } from "../../infrastructure/persistence/typeorm/entities/name.typeorm";
+import { EmailTypeORM } from "../../infrastructure/persistence/typeorm/entities/email.typeorm";
+import { PasswordTypeORM } from "../../infrastructure/persistence/typeorm/entities/password.typeorm";
+import { AgeTypeORM } from "../../infrastructure/persistence/typeorm/entities/age.typeorm";
+import { RateTypeORM } from "../../infrastructure/persistence/typeorm/entities/rate.typeorm";
+import { NumberOfRatesTypeORM } from "../../infrastructure/persistence/typeorm/entities/number.of.rates.typeorm";
 import { Employee } from "../../domain/entities/employee.entity";
-import { EmployeeTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/employee/employee.typeorm";
-import { YearsOfExperienceTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/employee/years.of.experience.typeorm";
-import { AvailabilityTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/employee/availabilityTypeORM";
-import { ProfessionIdTypeORM } from "../../infrastructure/persistence/typeorm/entities/professions/profession.id.typeorm";
+import { EmployeeTypeORM } from "../../infrastructure/persistence/typeorm/entities/employee.typeorm";
+import { YearsOfExperienceTypeORM } from "../../infrastructure/persistence/typeorm/entities/years.of.experience.typeorm";
+import { AvailabilityTypeORM } from "../../infrastructure/persistence/typeorm/entities/availabilityTypeORM";
 
 export class EmployeeMapper{
   public static toTypeORM(employee: Employee): EmployeeTypeORM {
@@ -21,7 +20,6 @@ export class EmployeeMapper{
     employeeTypeORM.age = AgeTypeORM.from(employee.getAge().getAge());
     employeeTypeORM.rate = RateTypeORM.from(employee.getRate());
     employeeTypeORM.numberOfRates = NumberOfRatesTypeORM.from(employee.getNumberOfRates());
-    employeeTypeORM.professionId = ProfessionIdTypeORM.from(employee.getProfessionId());
     employeeTypeORM.yearsOfExperience = YearsOfExperienceTypeORM.from(employee.getYearsOfExperience());
     employeeTypeORM.availability = AvailabilityTypeORM.from(employee.getAvailability());
     return employeeTypeORM;

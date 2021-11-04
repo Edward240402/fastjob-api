@@ -5,7 +5,6 @@ export class RegisterEmployeeCommand{
     public readonly password: string,
     public readonly age: number,
     //public readonly rate: number,
-    public readonly professionId: number,
     public readonly yearsOfExperience: number,
     public readonly availability: string
   ) {}

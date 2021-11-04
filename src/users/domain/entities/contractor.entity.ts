@@ -1,9 +1,9 @@
 import { User } from "./user.entity";
-import { UserId } from "../value-objects/users/user-id.value";
-import { Name } from "../value-objects/users/name.value";
-import { Email } from "../value-objects/users/email.value";
-import { Password } from "../value-objects/users/password.value";
-import { Age } from "../value-objects/users/age.value";
+import { UserId } from "../value-objects/user-id.value";
+import { Name } from "../value-objects/name.value";
+import { Email } from "../value-objects/email.value";
+import { Password } from "../value-objects/password.value";
+import { Age } from "../value-objects/age.value";
 import { ContractorRegisteredEvent } from "../events/contractor-registered.event";
 
 export class Contractor extends User{

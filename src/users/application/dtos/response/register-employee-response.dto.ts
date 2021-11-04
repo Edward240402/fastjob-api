@@ -7,7 +7,6 @@ export class RegisterEmployeeResponseDto{
     public readonly age: number,
     public readonly rate: number,
     public readonly numberOfRates: number,
-    public readonly professionId: number,
     public readonly yearsOfExperience: number,
     public readonly availability: string
   ) {}

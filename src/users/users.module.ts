@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersController } from "./api/users.controller";
-import { ContractorTypeORM } from "./infrastructure/persistence/typeorm/entities/users/contractor/contractorTypeORM";
-import { EmployeeTypeORM } from "./infrastructure/persistence/typeorm/entities/users/employee/employee.typeorm";
+import { ContractorTypeORM } from "./infrastructure/persistence/typeorm/entities/contractorTypeORM";
+import { EmployeeTypeORM } from "./infrastructure/persistence/typeorm/entities/employee.typeorm";
 import { UsersApplicationService } from "./application/services/users-application.service";
 import { RegisterUserValidator } from "./application/validators/register-user.validator";
 import { RegisterContractorsHandler } from "./application/handlers/commands/register-contractors.handler";
@@ -20,7 +20,7 @@ export const QueryHandlers = [GetContractorsHandler, GetEmployeesHandler];
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([ContractorTypeORM, EmployeeTypeORM]),
+    TypeOrmModule.forFeature([EmployeeTypeORM, ContractorTypeORM]),
   ],
   controllers: [UsersController],
   providers: [

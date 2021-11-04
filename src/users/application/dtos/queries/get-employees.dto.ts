@@ -6,7 +6,6 @@ export class GetEmployeesDto{
   public age: number;
   public rate: number;
   public numberOfRates: number;
-  public professionId: number;
   public yearsOfExperience: number;
   public availability: string;
 }

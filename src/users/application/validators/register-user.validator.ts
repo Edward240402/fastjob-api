@@ -1,12 +1,11 @@
 import { InjectRepository } from "@nestjs/typeorm";
-import { ContractorTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/contractor/contractorTypeORM";
+import { ContractorTypeORM } from "../../infrastructure/persistence/typeorm/entities/contractorTypeORM";
 import { Repository } from "typeorm";
-import { EmployeeTypeORM } from "../../infrastructure/persistence/typeorm/entities/users/employee/employee.typeorm";
+import { EmployeeTypeORM } from "../../infrastructure/persistence/typeorm/entities/employee.typeorm";
 import { Injectable } from "@nestjs/common";
 import { RegisterContractorRequestDto } from "../dtos/request/register-contractor-request.dto";
 import { AppNotification } from "../../../common/application/app.notification";
 import { RegisterEmployeeRequestDto } from "../dtos/request/register-employee-request.dto";
-import { ProfessionTypeORM } from "../../infrastructure/persistence/typeorm/entities/professions/profession.typeorm";
 
 @Injectable()
 export class RegisterUserValidator{
@@ -16,9 +15,6 @@ export class RegisterUserValidator{
 
     @InjectRepository(EmployeeTypeORM)
     private employeeRepository: Repository<EmployeeTypeORM>,
-
-    @InjectRepository(ProfessionTypeORM)
-    private professionRepository: Repository<ProfessionTypeORM>
   ) {}
 
   public async validateContractor(registerContractorRequestDto: RegisterContractorRequestDto): Promise<AppNotification>{
@@ -93,12 +89,6 @@ export class RegisterUserValidator{
     const employee: EmployeeTypeORM = await this.employeeRepository.createQueryBuilder().where("email = :email", {email}).getOne();
     if(employee != null){
       notification.addError('User email is taken', null);
-    }
-
-    const professionId: number = registerEmployeeRequestDto.professionId;
-    const profession: ProfessionTypeORM = await this.professionRepository.createQueryBuilder().where("professionId = :professionId", {professionId}).getOne();
-    if(profession == null){
-      notification.addError('Profession introduced does not exist', null);
     }
 
     return notification;

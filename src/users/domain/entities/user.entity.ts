@@ -1,9 +1,9 @@
 import { AggregateRoot } from "@nestjs/cqrs";
-import { UserId } from "../value-objects/users/user-id.value";
-import { Name } from "../value-objects/users/name.value";
-import { Password } from "../value-objects/users/password.value";
-import { Age } from "../value-objects/users/age.value";
-import { Email } from "../value-objects/users/email.value";
+import { UserId } from "../value-objects/user-id.value";
+import { Name } from "../value-objects/name.value";
+import { Password } from "../value-objects/password.value";
+import { Age } from "../value-objects/age.value";
+import { Email } from "../value-objects/email.value";
 
 export class User extends AggregateRoot{
   protected id: UserId;

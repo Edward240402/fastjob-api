@@ -1,16 +1,16 @@
 import { RegisterContractorCommand } from "../../commands/register-contractor.command";
 import { CommandHandler, EventPublisher, ICommandHandler } from "@nestjs/cqrs";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ContractorTypeORM } from "../../../infrastructure/persistence/typeorm/entities/users/contractor/contractorTypeORM";
+import { ContractorTypeORM } from "../../../infrastructure/persistence/typeorm/entities/contractorTypeORM";
 import { Repository } from "typeorm";
 import { Result } from "typescript-result";
 import { AppNotification } from "../../../../common/application/app.notification";
-import { Name } from "../../../domain/value-objects/users/name.value";
-import { Email } from "../../../domain/value-objects/users/email.value";
-import { Password } from "../../../domain/value-objects/users/password.value";
-import { Age } from "../../../domain/value-objects/users/age.value";
+import { Name } from "../../../domain/value-objects/name.value";
+import { Email } from "../../../domain/value-objects/email.value";
+import { Password } from "../../../domain/value-objects/password.value";
+import { Age } from "../../../domain/value-objects/age.value";
 import { Contractor } from "../../../domain/entities/contractor.entity";
-import { UserId } from "../../../domain/value-objects/users/user-id.value";
+import { UserId } from "../../../domain/value-objects/user-id.value";
 import { ContractorMapper } from "../../mappers/contractor.mapper";
 
 @CommandHandler(RegisterContractorCommand)

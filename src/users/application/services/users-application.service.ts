@@ -59,7 +59,6 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.email,
       registerEmployeeRequestDto.password,
       registerEmployeeRequestDto.age,
-      registerEmployeeRequestDto.professionId,
       registerEmployeeRequestDto.yearsOfExperience,
       "None"
     );
@@ -72,7 +71,6 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.password,
       registerEmployeeRequestDto.age,
       0, 0,
-      registerEmployeeRequestDto.professionId,
       registerEmployeeRequestDto.yearsOfExperience,
       "None"
     );

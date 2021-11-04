@@ -1,5 +1,5 @@
 import { Result } from "typescript-result";
-import { AppNotification } from "../../../../common/application/app.notification";
+import { AppNotification } from "../../../common/application/app.notification";
 
 export class Availability{
   private readonly availability: string;
