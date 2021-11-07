@@ -23,22 +23,23 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
      FROM 
         employees
      ORDER BY
-        user_id`;
+        user_id;`;
     const ormEmployees = await manager.query(sql);
     if(ormEmployees.length <= 0){
       return [];
     }
     const employees: GetEmployeesDto[] = ormEmployees.map(function(ormEmployee){
       let employeeDto = new GetEmployeesDto()
-      employeeDto.id = Number(ormEmployee.id);
+      employeeDto.id = Number(ormEmployee.user_id);
       employeeDto.name = ormEmployee.name;
       employeeDto.email = ormEmployee.email;
       employeeDto.password = ormEmployee.password;
       employeeDto.age = ormEmployee.age;
       employeeDto.rate = ormEmployee.rate;
-      employeeDto.numberOfRates = ormEmployee.numberOfRates;
-      employeeDto.yearsOfExperience = ormEmployee.yearsOfExperience;
+      employeeDto.numberOfRates = ormEmployee.number_of_rates;
+      employeeDto.yearsOfExperience = ormEmployee.years_of_experience;
       employeeDto.availability = ormEmployee.availability;
+      return employeeDto;
     });
     return employees;
   }

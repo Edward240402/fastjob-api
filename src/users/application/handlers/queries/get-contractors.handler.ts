@@ -21,20 +21,21 @@ export class GetContractorsHandler implements IQueryHandler<GetContractorsQuery>
      FROM 
         contractors
      ORDER BY
-        user_id`;
+        user_id;`;
     const ormContractors = await manager.query(sql);
     if(ormContractors.length <= 0){
       return [];
     }
     const contractors: GetContractorsDto[] = ormContractors.map(function(ormContractor){
       let contractorDto = new GetContractorsDto()
-      contractorDto.id = Number(ormContractor.id);
+      contractorDto.id = Number(ormContractor.user_id);
       contractorDto.name = ormContractor.name;
       contractorDto.email = ormContractor.email;
       contractorDto.password = ormContractor.password;
       contractorDto.age = ormContractor.age;
       contractorDto.rate = ormContractor.rate;
-      contractorDto.numberOfRates = ormContractor.numberOfRates;
+      contractorDto.numberOfRates = ormContractor.number_of_rates;
+      return contractorDto;
     });
     return contractors;
   }
