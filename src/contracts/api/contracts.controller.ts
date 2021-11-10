@@ -1,4 +1,4 @@
-/*import { Controller } from "@nestjs/common";
+import { Controller } from "@nestjs/common";
 
 @Controller('contracts')
 export class ContractsController {
@@ -6,4 +6,4 @@ export class ContractsController {
     private readonly contractorsApplicationService:
   ) {
   }
-}*/
+}
