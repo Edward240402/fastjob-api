@@ -18,7 +18,14 @@ export class Employee extends User{
   }
 
   public register() {
-    const event = new EmployeeRegisteredEvent(this.id.getValue(), this.name.getName(), this.email.getEmail(), this.password.getPassword(), this.age.getAge(), this.rate, this.numberOfRates, this.yearsOfExperience, this.availability);
+    const event = new EmployeeRegisteredEvent(
+      this.id.getValue(),
+      this.name.getName(),
+      this.email.getEmail(),
+      this.password.getPassword(),
+      this.age.getAge(),
+      this.rate,
+      this.numberOfRates, this.yearsOfExperience, this.availability);
     this.apply(event);
   }
 

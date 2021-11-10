@@ -38,7 +38,7 @@ export class RegisterContractValidator{
     }
 
     id = registerContractRequestDto.contractorId;
-    const contractor = ContractorTypeORM = await this.contractorRepository.createQueryBuilder().where('contractor_id = :id', { id }).getOne();
+    const contractor: ContractorTypeORM = await this.contractorRepository.createQueryBuilder().where('contractor_id = :id', { id }).getOne();
     if(contractor == null){
       notification.addError('Contractor not found', null);
     }

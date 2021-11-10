@@ -1,12 +1,11 @@
-import { Column, Entity } from "typeorm";
-import { Unique } from "typeorm/browser";
+import { Column, Entity, Unique } from "typeorm";
 import { ContractIdTypeORM } from "./contract.id.typeorm";
-import { EmployeeIdTypeORM } from "../../../../../users/infrastructure/persistence/typeorm/entities/employee.id.typeorm";
-import { ContractorIdTypeORM } from "../../../../../users/infrastructure/persistence/typeorm/entities/contractor.id.typeorm";
 import { ContractDateTypeORM } from "./contractDate.typeorm";
-import { AgreedDateTypeorm } from "./agreedDate.typeorm";
+import { AgreedDateTypeORM } from "./agreedDateTypeORM";
 import { JobTypeORM } from "./job.typeorm";
 import { StateTypeORM } from "./state.typeorm";
+import { EmployeeIdTypeorm } from "./employee-id.typeorm";
+import { ContractorIdTypeorm } from "./contractor-id.typeorm";
 
 @Entity('contracts')
 @Unique('UQ_contracts_id', ['id.value'])
@@ -14,17 +13,17 @@ export class ContractTypeORM {
   @Column(type => ContractIdTypeORM, { prefix: false })
   public id: ContractIdTypeORM;
 
-  @Column(type => EmployeeIdTypeORM, { prefix: false })
-  public employee_id: EmployeeIdTypeORM;
+  @Column(type => EmployeeIdTypeorm, { prefix: false })
+  public employee_id: EmployeeIdTypeorm;
 
-  @Column(type => ContractorIdTypeORM, { prefix: false })
-  public contractor_id: ContractorIdTypeORM;
+  @Column(type => ContractorIdTypeorm, { prefix: false })
+  public contractor_id: ContractorIdTypeorm;
 
   @Column(type => ContractDateTypeORM, { prefix: false })
   public contract_date: ContractDateTypeORM;
 
-  @Column(type => AgreedDateTypeorm, { prefix: false })
-  public agreed_date: AgreedDateTypeorm;
+  @Column(type => AgreedDateTypeORM, { prefix: false })
+  public agreed_date: AgreedDateTypeORM;
 
   @Column(type => JobTypeORM, { prefix: false })
   public job_type: JobTypeORM;
