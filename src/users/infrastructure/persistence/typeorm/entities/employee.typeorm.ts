@@ -1,4 +1,3 @@
-import { UserTypeORM } from "./user.typeorm";
 import { Column, Entity, Unique } from "typeorm";
 import { YearsOfExperienceTypeORM } from "./years.of.experience.typeorm";
 import { AvailabilityTypeORM } from "./availabilityTypeORM";
@@ -9,12 +8,13 @@ import { PasswordTypeORM } from "./password.typeorm";
 import { AgeTypeORM } from "./age.typeorm";
 import { RateTypeORM } from "./rate.typeorm";
 import { NumberOfRatesTypeORM } from "./number.of.rates.typeorm";
+import { EmployeeIdTypeORM } from "./employee.id.typeorm";
 
 @Entity('employees')
-@Unique('UQ_employees_user_id', ['id.value'])
+@Unique('UQ_employees_employee_id', ['id.value'])
 export class EmployeeTypeORM {
-  @Column(type => UserIdTypeORM, { prefix: false })
-  public id: UserIdTypeORM;
+  @Column(type => EmployeeIdTypeORM, { prefix: false })
+  public id: EmployeeIdTypeORM;
 
   @Column(type => NameTypeORM, {prefix: false})
   public name: NameTypeORM;

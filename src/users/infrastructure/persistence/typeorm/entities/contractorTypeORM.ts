@@ -1,18 +1,17 @@
-import { UserTypeORM } from "./user.typeorm";
 import { Column, Entity, Unique } from "typeorm";
-import { UserIdTypeORM } from "./user.id.typeorm";
 import { NameTypeORM } from "./name.typeorm";
 import { EmailTypeORM } from "./email.typeorm";
 import { PasswordTypeORM } from "./password.typeorm";
 import { AgeTypeORM } from "./age.typeorm";
 import { RateTypeORM } from "./rate.typeorm";
 import { NumberOfRatesTypeORM } from "./number.of.rates.typeorm";
+import { ContractorIdTypeORM } from "./contractor.id.typeorm";
 
 @Entity('contractors')
-@Unique('UQ_contractors_user_id', ['id.value'])
+@Unique('UQ_contractors_contractor_id', ['id.value'])
 export class ContractorTypeORM {
-  @Column(type => UserIdTypeORM, { prefix: false })
-  public id: UserIdTypeORM;
+  @Column(type => ContractorIdTypeORM, { prefix: false })
+  public id: ContractorIdTypeORM;
 
   @Column(type => NameTypeORM, {prefix: false})
   public name: NameTypeORM;

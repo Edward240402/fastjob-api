@@ -11,7 +11,7 @@ export class GetContractorsHandler implements IQueryHandler<GetContractorsQuery>
     const manager = getManager();
     const sql = `
     SELECT
-      user_id,
+      contractor_id,
       name,
       email,
       password,
@@ -21,14 +21,14 @@ export class GetContractorsHandler implements IQueryHandler<GetContractorsQuery>
      FROM 
         contractors
      ORDER BY
-        user_id;`;
+        contractor_id;`;
     const ormContractors = await manager.query(sql);
     if(ormContractors.length <= 0){
       return [];
     }
     const contractors: GetContractorsDto[] = ormContractors.map(function(ormContractor){
       let contractorDto = new GetContractorsDto()
-      contractorDto.id = Number(ormContractor.user_id);
+      contractorDto.id = Number(ormContractor.contractor_id);
       contractorDto.name = ormContractor.name;
       contractorDto.email = ormContractor.email;
       contractorDto.password = ormContractor.password;

@@ -11,7 +11,7 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
     const manager = getManager();
     const sql = `
     SELECT
-      user_id,
+      employee_id,
       name,
       email,
       password,
@@ -23,14 +23,14 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
      FROM 
         employees
      ORDER BY
-        user_id;`;
+        employee_id;`;
     const ormEmployees = await manager.query(sql);
     if(ormEmployees.length <= 0){
       return [];
     }
     const employees: GetEmployeesDto[] = ormEmployees.map(function(ormEmployee){
       let employeeDto = new GetEmployeesDto()
-      employeeDto.id = Number(ormEmployee.user_id);
+      employeeDto.id = Number(ormEmployee.employee_id);
       employeeDto.name = ormEmployee.name;
       employeeDto.email = ormEmployee.email;
       employeeDto.password = ormEmployee.password;
