@@ -2,10 +2,10 @@ import { Column, Entity, Unique } from "typeorm";
 import { ContractIdTypeORM } from "./contract.id.typeorm";
 import { ContractDateTypeORM } from "./contractDate.typeorm";
 import { AgreedDateTypeORM } from "./agreedDateTypeORM";
-import { JobTypeORM } from "./job.typeorm";
+import { JobTypeORM } from "../../../../../common/infrastructure/persistence/typeorm/entities/job.typeorm";
 import { StateTypeORM } from "./state.typeorm";
-import { EmployeeIdTypeorm } from "./employee-id.typeorm";
-import { ContractorIdTypeorm } from "./contractor-id.typeorm";
+import { EmployeeIdTypeorm } from "../../../../../common/infrastructure/persistence/typeorm/entities/employee-id.typeorm";
+import { ContractorIdTypeorm } from "../../../../../common/infrastructure/persistence/typeorm/entities/contractor-id.typeorm";
 
 @Entity('contracts')
 @Unique('UQ_contracts_id', ['id.value'])

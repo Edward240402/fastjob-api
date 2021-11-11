@@ -6,7 +6,7 @@ import { Result } from "typescript-result";
 import { AppNotification } from "../../common/application/app.notification";
 import { RegisterContractResponseDto } from "../application/dtos/response/register-contract-response.dto";
 import { ApiController } from "../../common/api/api.controller";
-import { GetContractsQuery } from "../application/quieries/get-contracts.query";
+import { GetContractsQuery } from "../application/queries/get-contracts.query";
 
 @Controller('contracts')
 export class ContractsController {
