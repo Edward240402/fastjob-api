@@ -1,8 +1,8 @@
 import { ContractId } from "../value-objects/contract-id.value";
 import { AggregateRoot } from "@nestjs/cqrs";
 import { UserId } from "../../../users/domain/value-objects/user-id.value";
-import { DateTime } from "../value-objects/date-time.value";
-import { JobType } from "../value-objects/job-type.value";
+import { DateTime } from "../../../common/domain/value-objects/date-time.value";
+import { JobType } from "../../../common/domain/value-objects/job-type.value";
 import { State } from "../value-objects/state.value";
 import { ContractRegisteredEvent } from "../events/contract-registered.event";
 

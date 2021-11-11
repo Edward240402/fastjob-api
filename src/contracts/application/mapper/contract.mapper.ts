@@ -3,12 +3,12 @@ import { ContractTypeORM } from "../../infrastructure/persistence/typeorm/entiti
 import { ContractIdTypeORM } from "../../infrastructure/persistence/typeorm/entities/contract.id.typeorm";
 import { ContractDateTypeORM } from "../../infrastructure/persistence/typeorm/entities/contractDate.typeorm";
 import { AgreedDateTypeORM } from "../../infrastructure/persistence/typeorm/entities/agreedDateTypeORM";
-import { JobTypeORM } from "../../infrastructure/persistence/typeorm/entities/job.typeorm";
+import { JobTypeORM } from "../../../common/infrastructure/persistence/typeorm/entities/job.typeorm";
 import { StateTypeORM } from "../../infrastructure/persistence/typeorm/entities/state.typeorm";
-import { EmployeeIdTypeorm } from "../../infrastructure/persistence/typeorm/entities/employee-id.typeorm";
-import { ContractorIdTypeorm } from "../../infrastructure/persistence/typeorm/entities/contractor-id.typeorm";
+import { EmployeeIdTypeorm } from "../../../common/infrastructure/persistence/typeorm/entities/employee-id.typeorm";
+import { ContractorIdTypeorm } from "../../../common/infrastructure/persistence/typeorm/entities/contractor-id.typeorm";
 
-export class ContractMapper{
+export class ContractMapper {
   public static toTypeORM(contract: Contract): ContractTypeORM{
     const contractTypeORM: ContractTypeORM = new ContractTypeORM();
     contractTypeORM.id = ContractIdTypeORM.from(contract.getId().getValue());
