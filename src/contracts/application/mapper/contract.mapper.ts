@@ -8,7 +8,7 @@ import { StateTypeORM } from "../../infrastructure/persistence/typeorm/entities/
 import { EmployeeIdTypeorm } from "../../../common/infrastructure/persistence/typeorm/entities/employee-id.typeorm";
 import { ContractorIdTypeorm } from "../../../common/infrastructure/persistence/typeorm/entities/contractor-id.typeorm";
 
-export class ContractMapper{
+export class ContractMapper {
   public static toTypeORM(contract: Contract): ContractTypeORM{
     const contractTypeORM: ContractTypeORM = new ContractTypeORM();
     contractTypeORM.id = ContractIdTypeORM.from(contract.getId().getValue());

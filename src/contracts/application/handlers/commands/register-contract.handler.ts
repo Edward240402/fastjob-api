@@ -5,8 +5,8 @@ import { ContractTypeORM } from "../../../infrastructure/persistence/typeorm/ent
 import { Repository } from "typeorm";
 import { Result } from "typescript-result";
 import { AppNotification } from "../../../../common/application/app.notification";
-import { DateTime } from "../../../domain/value-objects/date-time.value";
-import { JobType } from "../../../domain/value-objects/job-type.value";
+import { DateTime } from "../../../../common/domain/value-objects/date-time.value";
+import { JobType } from "../../../../common/domain/value-objects/job-type.value";
 import { State } from "../../../domain/value-objects/state.value";
 import { Contract } from "../../../domain/entities/contract.entity";
 import { ContractId } from "../../../domain/value-objects/contract-id.value";

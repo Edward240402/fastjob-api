@@ -1,5 +1,4 @@
-import { Column, Entity } from "typeorm";
-import { Unique } from "typeorm/browser";
+import { Column, Entity, Unique } from "typeorm";
 import { PostIdTypeORM } from "./post.id.typeorm";
 import { EmployeeIdTypeorm } from "../../../../../common/infrastructure/persistence/typeorm/entities/employee-id.typeorm";
 import { PublishDateTypeORM } from "./publish-date.typeorm";

@@ -4,12 +4,16 @@ import { PostTypeORM } from "../../infrastructure/persistence/typeorm/entities/p
 import { Repository } from "typeorm";
 import { RegisterPostRequestDto } from "../dtos/request/register-post-request.dto";
 import { AppNotification } from "../../../common/application/app.notification";
+import { EmployeeTypeORM } from "../../../users/infrastructure/persistence/typeorm/entities/employee.typeorm";
 
 @Injectable()
 export class RegisterPostValidator{
   constructor(
     @InjectRepository(PostTypeORM)
-    private postRepository: Repository<PostTypeORM>
+    private postRepository: Repository<PostTypeORM>,
+
+    @InjectRepository(EmployeeTypeORM)
+    private employeeRepository: Repository<EmployeeTypeORM>
   ) {}
 
   public async validate(registerPostRequestDto: RegisterPostRequestDto): Promise<AppNotification> {
@@ -39,7 +43,7 @@ export class RegisterPostValidator{
       return notification;
     }
 
-    const employee: PostTypeORM = await this.postRepository.createQueryBuilder().where("employee_id = :id", {employeeId}).getOne();
+    const employee: EmployeeTypeORM = await this.employeeRepository.createQueryBuilder().where("employee_id = :employeeId", {employeeId}).getOne();
     if(employee == null){
       notification.addError('Employee not found', null);
     }

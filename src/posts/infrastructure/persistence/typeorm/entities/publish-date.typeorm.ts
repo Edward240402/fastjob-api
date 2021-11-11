@@ -1,7 +1,7 @@
 import { Column } from "typeorm";
 
 export class PublishDateTypeORM {
-  @Column('datetime', {name: 'published_date', nullable: true })
+  @Column('datetime', {name: 'publish_date', nullable: true })
   public date: Date;
 
   private constructor(date: Date) {
