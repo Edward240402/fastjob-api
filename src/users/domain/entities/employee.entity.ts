@@ -5,8 +5,9 @@ import { Email } from "../value-objects/email.value";
 import { Password } from "../value-objects/password.value";
 import { Age } from "../value-objects/age.value";
 import { EmployeeRegisteredEvent } from "../events/employee-registered.event";
+import { UserInterface } from "../factories/product/user-interface";
 
-export class Employee extends User{
+export class Employee extends User implements UserInterface{
   private yearsOfExperience: number;
   private availability: string;
 

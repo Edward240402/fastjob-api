@@ -12,6 +12,9 @@ import { Age } from "../../../domain/value-objects/age.value";
 import { Contractor } from "../../../domain/entities/contractor.entity";
 import { UserId } from "../../../domain/value-objects/user-id.value";
 import { ContractorMapper } from "../../mappers/contractor.mapper";
+import { UserFactory } from "../../../domain/factories/creator/abstract/user-factory";
+import { UserFactoryMethod } from "../../../domain/factories/factory/UserFactoryMethod";
+import { UserType } from "../../../domain/enums/UserType";
 
 @CommandHandler(RegisterContractorCommand)
 export class RegisterContractorsHandler implements ICommandHandler<RegisterContractorCommand> {
@@ -42,7 +45,9 @@ export class RegisterContractorsHandler implements ICommandHandler<RegisterContr
       return 0;
     }
 
-    let contractor: Contractor = new Contractor(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0);
+    let userFactory: UserFactory = UserFactoryMethod.getType(UserType.CONTRACTOR);
+    let contractor: Contractor = userFactory.
+    //let contractor: Contractor = new Contractor(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0);
     let contractorTypeORM = ContractorMapper.toTypeORM(contractor);
     contractorTypeORM = await this.contractorRepository.save(contractorTypeORM);
     if(contractorTypeORM == null){

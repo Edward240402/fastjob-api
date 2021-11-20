@@ -14,6 +14,9 @@ import { YearsOfExperience } from "../../../domain/value-objects/years-of-experi
 import { Availability } from "../../../domain/value-objects/availability.value";
 import { Employee } from "../../../domain/entities/employee.entity";
 import { EmployeeMapper } from "../../mappers/employee.mapper";
+import { UserFactory } from "../../../domain/factories/creator/abstract/user-factory";
+import { UserFactoryMethod } from "../../../domain/factories/factory/UserFactoryMethod";
+import { UserType } from "../../../domain/enums/UserType";
 
 @CommandHandler(RegisterEmployeeCommand)
 export class RegisterEmployeeHandler implements ICommandHandler<RegisterEmployeeCommand> {
@@ -54,6 +57,7 @@ export class RegisterEmployeeHandler implements ICommandHandler<RegisterEmployee
       return 0;
     }
 
+    let userFactory: UserFactory = UserFactoryMethod.getType(UserType.EMPLOYEE);
     let employee: Employee = new Employee(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0
       , yearsOfExperienceResult.value.getYearsOfExperience(), availabilityResult.value.getAvailability());
     let employeeTypeORM = EmployeeMapper.toTypeORM(employee);
