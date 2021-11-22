@@ -1,7 +1,7 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class InitialSchema1637557343949 implements MigrationInterface {
-    name = 'InitialSchema1637557343949'
+export class InitialSchema1637584512112 implements MigrationInterface {
+    name = 'InitialSchema1637584512112'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE \`contracts\` (\`id\` bigint UNSIGNED NOT NULL AUTO_INCREMENT, \`employee_id\` bigint UNSIGNED NOT NULL, \`contractor_id\` bigint UNSIGNED NOT NULL, \`contract_date\` datetime NOT NULL, \`agreed_date\` datetime NULL, \`job\` varchar(50) NOT NULL, \`state\` varchar(50) NOT NULL, UNIQUE INDEX \`UQ_contracts_id\` (\`id\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);
