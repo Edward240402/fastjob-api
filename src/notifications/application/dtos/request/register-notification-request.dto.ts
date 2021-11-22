@@ -1,8 +1,8 @@
-export class RegisterNotificationUsersRequestDto {
+export class RegisterNotificationRequestDto {
   constructor(
     public readonly employeeId: number,
     public readonly contractorId: number,
     public readonly postId: number,
-    public readonly information: string,
+    public readonly state: string,
   ) {}
 }

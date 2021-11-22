@@ -1,12 +1,12 @@
-import { NotificationUserRegisteredEvent } from '../../../domain/events/notification-registered.event';
+import { NotificationRegisteredEvent } from '../../../domain/events/notification-registered.event';
 import { IEventHandler } from '@nestjs/cqrs';
 import { EventsHandler } from '@nestjs/cqrs/dist/decorators/events-handler.decorator';
 
-@EventsHandler(NotificationUserRegisteredEvent)
-export class NotificationUserRegisteredHandler implements IEventHandler<NotificationUserRegisteredEvent> {
+@EventsHandler(NotificationRegisteredEvent)
+export class NotificationRegisteredHandler implements IEventHandler<NotificationRegisteredEvent> {
   constructor() {}
 
-  handle(event: NotificationUserRegisteredEvent) {
+  handle(event: NotificationRegisteredEvent) {
     console.log('handle logic for NotificationRegisteredEvent');
     console.log(event);
   }

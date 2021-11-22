@@ -1,7 +1,7 @@
-export class GetNotificationUsersDto {
+export class GetNotificationsDto {
   public id: number;
   public employeeId: number;
   public contractorId: number;
   public postId: number;
-  public information: string;
+  public state: string;
 }

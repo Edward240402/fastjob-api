@@ -1,31 +1,38 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { NotificationUserController } from './api/notification.controller';
-import { NotificationUserTypeORM } from './infrastructure/persistence/typeorm/entities/notification.typeorm';
-import { NotificationUsersApplicationService } from './application/services/notifications-application.service';
-import { RegisterNotificationUserValidator } from './application/validators/register-notification.validator';
-import { RegisterNotificationUserHandler } from './application/handlers/commands/register-notification.handler';
-import { NotificationUserRegisteredHandler } from './application/handlers/events/notification-registered.handler';
-import { GetNotificationUserHandler } from './application/handlers/queries/get-notification.handler';
+import { NotificationsController } from './api/notification.controller';
+import { NotificationTypeORM } from './infrastructure/persistence/typeorm/entities/notification.typeorm';
+import { NotificationsApplicationService } from './application/services/notifications-application.service';
+import { RegisterNotificationValidator } from './application/validators/register-notification.validator';
+import { RegisterNotificationHandler } from './application/handlers/commands/register-notification.handler';
+import { NotificationRegisteredHandler } from './application/handlers/events/notification-registered.handler';
+import { GetNotificationsHandler } from './application/handlers/queries/get-notifications.handler';
+import { UsersModule } from "../users/users.module";
+import { PostsModule } from "../posts/posts.module";
+import { EmployeeTypeORM } from "../users/infrastructure/persistence/typeorm/entities/employee.typeorm";
+import { ContractorTypeORM } from "../users/infrastructure/persistence/typeorm/entities/contractorTypeORM";
+import { PostTypeORM } from "../posts/infrastructure/persistence/typeorm/entities/post.typeorm";
 
 
-export const CommandHandlers = [RegisterNotificationUserHandler];
-export const EventHandlers = [NotificationUserRegisteredHandler];
-export const QueryHandlers = [GetNotificationUserHandler];
+export const CommandHandlers = [RegisterNotificationHandler];
+export const EventHandlers = [NotificationRegisteredHandler];
+export const QueryHandlers = [GetNotificationsHandler];
 
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([NotificationUserTypeORM]),
+    UsersModule,
+    PostsModule,
+    TypeOrmModule.forFeature([NotificationTypeORM, EmployeeTypeORM, ContractorTypeORM, PostTypeORM]),
   ],
-  controllers: [NotificationUserController],
+  controllers: [NotificationsController],
   providers: [
-    NotificationUsersApplicationService,
-    RegisterNotificationUserValidator,
+    NotificationsApplicationService,
+    RegisterNotificationValidator,
     ...CommandHandlers,
     ...EventHandlers,
     ...QueryHandlers
   ]
 })
-export class NotificationUsersModule {}
+export class NotificationsModule {}

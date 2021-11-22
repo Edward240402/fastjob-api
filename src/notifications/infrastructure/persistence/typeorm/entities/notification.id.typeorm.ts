@@ -1,6 +1,6 @@
 import { PrimaryGeneratedColumn } from 'typeorm';
 
-export class NotificationUserIdTypeORM {
+export class NotificationIdTypeORM {
   @PrimaryGeneratedColumn('increment', { type: 'bigint', name: 'id', unsigned: true })
   public value: number;
 
@@ -8,7 +8,7 @@ export class NotificationUserIdTypeORM {
     this.value = value;
   }
 
-  public static from(value: number): NotificationUserIdTypeORM  {
-    return new NotificationUserIdTypeORM(value);
+  public static from(value: number): NotificationIdTypeORM  {
+    return new NotificationIdTypeORM(value);
   }
 }

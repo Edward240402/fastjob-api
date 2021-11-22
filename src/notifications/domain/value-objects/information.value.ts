@@ -1,30 +1,30 @@
 import { Result } from 'typescript-result';
 import { AppNotification } from '../../../common/application/app.notification';
 
-export class Information {
-  private readonly information: string;
+export class NotificationState {
+  private readonly state: string;
   private static MAX_LENGTH: number = 50;
 
-  private constructor(information: string) {
-    this.information = information;
+  private constructor(state: string) {
+    this.state = state;
   }
 
-  public getInformation(): string {
-    return this.information;
+  public getState(): string {
+    return this.state;
   }
 
-  public static create(information: string): Result<AppNotification, Information> {
+  public static create(state: string): Result<AppNotification, NotificationState> {
     let notification: AppNotification = new AppNotification();
-    information = (information ?? "").trim();
-    if(information === ""){
-      notification.addError('The information is required', null);
+    state = (state ?? "").trim();
+    if(state === ""){
+      notification.addError('The state is required', null);
     }
-    if(information.length > this.MAX_LENGTH) {
-      notification.addError('The maximum length of a information is ' + this.MAX_LENGTH + ' characters including spaces', null);
+    if(state.length > this.MAX_LENGTH) {
+      notification.addError('The maximum length of a state is ' + this.MAX_LENGTH + ' characters including spaces', null);
     }
     if(notification.hasErrors()){
       return Result.error(notification);
     }
-    return Result.ok(new Information(information));
+    return Result.ok(new NotificationState(state));
   }
 }

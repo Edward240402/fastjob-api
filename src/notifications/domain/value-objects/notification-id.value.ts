@@ -1,4 +1,4 @@
-export class NotificationUsersId {
+export class NotificationId {
   private readonly value: number;
 
   private constructor(value: number) {
@@ -6,7 +6,7 @@ export class NotificationUsersId {
   }
 
   public static create(value: number) {
-    return new NotificationUsersId(value);
+    return new NotificationId(value);
   }
 
   public getValue(): number {

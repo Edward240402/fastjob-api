@@ -1,1 +1,1 @@
-export class GetNotificationUsersQuery {}
+export class GetNotificationsQuery {}
