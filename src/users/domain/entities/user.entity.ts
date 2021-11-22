@@ -13,6 +13,8 @@ export class User extends AggregateRoot{
   protected age: Age;
   protected rate: number;
   protected numberOfRates: number;
+  protected yearsOfExperience: number;
+  protected availability: string;
 
   public constructor(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number) {
     super();
@@ -24,6 +26,8 @@ export class User extends AggregateRoot{
     this.rate = rate;
     this.numberOfRates = numberOfRates;
   }
+
+  public register(){}
 
   public changeId(id: UserId) {
     this.id = id;
@@ -55,5 +59,13 @@ export class User extends AggregateRoot{
 
   public getNumberOfRates(): number{
     return this.numberOfRates;
+  }
+
+  public getYearsOfExperience(): number {
+    return this.yearsOfExperience;
+  }
+
+  public getAvailability(): string {
+    return this.availability;
   }
 }

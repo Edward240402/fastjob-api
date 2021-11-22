@@ -45,8 +45,8 @@ export class RegisterContractorsHandler implements ICommandHandler<RegisterContr
       return 0;
     }
 
-    let userFactory: UserFactory = UserFactoryMethod.getType(UserType.CONTRACTOR);
-    let contractor: Contractor = userFactory.
+    const userFactory: UserFactory = UserFactoryMethod.getType(UserType.CONTRACTOR);
+    let contractor: Contractor = userFactory.createUser(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0, null, null);
     //let contractor: Contractor = new Contractor(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0);
     let contractorTypeORM = ContractorMapper.toTypeORM(contractor);
     contractorTypeORM = await this.contractorRepository.save(contractorTypeORM);

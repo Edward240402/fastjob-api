@@ -57,9 +57,11 @@ export class RegisterEmployeeHandler implements ICommandHandler<RegisterEmployee
       return 0;
     }
 
-    let userFactory: UserFactory = UserFactoryMethod.getType(UserType.EMPLOYEE);
-    let employee: Employee = new Employee(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0
-      , yearsOfExperienceResult.value.getYearsOfExperience(), availabilityResult.value.getAvailability());
+    const userFactory: UserFactory = UserFactoryMethod.getType(UserType.EMPLOYEE);
+    let employee: Employee = userFactory.createUser(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0
+        , yearsOfExperienceResult.value.getYearsOfExperience(), availabilityResult.value.getAvailability());
+    //let employee: Employee = new Employee(UserId.create(0), nameResult.value, emailResult.value, passwordResult.value, ageResult.value, 0, 0
+    //  , yearsOfExperienceResult.value.getYearsOfExperience(), availabilityResult.value.getAvailability());
     let employeeTypeORM = EmployeeMapper.toTypeORM(employee);
     employeeTypeORM = await this.employeeRepository.save(employeeTypeORM);
     if(employeeTypeORM == null){
