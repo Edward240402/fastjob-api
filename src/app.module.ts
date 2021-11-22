@@ -5,10 +5,10 @@ import { UsersModule } from "./users/users.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ContractsModule } from "./contracts/contracts.module";
 import { PostsModule } from "./posts/posts.module";
-import { NotificationUsersModule } from "./notificationsBase/notifications.module";
+import { NotificationsModule } from "./notifications/notifications.module";
 
 @Module({
-  imports: [UsersModule, NotificationUsersModule, ContractsModule, PostsModule, TypeOrmModule.forRoot()],
+  imports: [UsersModule, NotificationsModule, ContractsModule, PostsModule, TypeOrmModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })
