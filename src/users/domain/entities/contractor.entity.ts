@@ -5,8 +5,9 @@ import { Email } from "../value-objects/email.value";
 import { Password } from "../value-objects/password.value";
 import { Age } from "../value-objects/age.value";
 import { ContractorRegisteredEvent } from "../events/contractor-registered.event";
+import { UserInterface } from "../factories/product/user-interface";
 
-export class Contractor extends User{
+export class Contractor extends User implements UserInterface{
   public constructor(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number) {
     super(id, name, email, password, age, rate, numberOfRates);
   }

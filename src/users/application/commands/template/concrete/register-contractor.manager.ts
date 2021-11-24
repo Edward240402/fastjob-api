@@ -11,6 +11,9 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ContractorTypeORM } from "../../../../infrastructure/persistence/typeorm/entities/contractorTypeORM";
 import { Repository } from "typeorm";
 import { EventPublisher } from "@nestjs/cqrs";
+import { UserFactory } from "../../../../domain/factories/creator/abstract/user-factory";
+import { UserFactoryMethod } from "../../../../domain/factories/factory/UserFactoryMethod";
+import { UserType } from "../../../../domain/enums/UserType";
 
 export class RegisterContractorManager extends RegisterUserTemplate{
   private contractorCommand: RegisterContractorCommand
@@ -53,7 +56,10 @@ export class RegisterContractorManager extends RegisterUserTemplate{
       return;
     }
 
-    this.contractor = new Contractor(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0);
+    const userFactory: UserFactory = UserFactoryMethod.getType(UserType.CONTRACTOR);
+    this.contractor = userFactory.createUser(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0, null, null);
+
+    //this.contractor = new Contractor(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0);
     this.contractorTypeORM = ContractorMapper.toTypeORM(this.contractor);
     this.contractorTypeORM = await this.contractorRepository.save(this.contractorTypeORM);
     if(this.contractorTypeORM == null){

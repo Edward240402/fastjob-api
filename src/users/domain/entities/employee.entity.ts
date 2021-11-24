@@ -5,10 +5,11 @@ import { Email } from "../value-objects/email.value";
 import { Password } from "../value-objects/password.value";
 import { Age } from "../value-objects/age.value";
 import { EmployeeRegisteredEvent } from "../events/employee-registered.event";
+import { UserInterface } from "../factories/product/user-interface";
 
-export class Employee extends User{
-  private yearsOfExperience: number;
-  private availability: string;
+export class Employee extends User implements UserInterface{
+  //private yearsOfExperience: number;
+  //private availability: string;
 
   public constructor(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number,
                      yearsOfExperience: number, availability: string) {
@@ -29,11 +30,11 @@ export class Employee extends User{
     this.apply(event);
   }
 
-  public getYearsOfExperience(): number {
-    return this.yearsOfExperience;
-  }
+  //public getYearsOfExperience(): number {
+  //  return this.yearsOfExperience;
+  //}
 
-  public getAvailability(): string {
-    return this.availability;
-  }
+  //public getAvailability(): string {
+  //  return this.availability;
+  //}
 }

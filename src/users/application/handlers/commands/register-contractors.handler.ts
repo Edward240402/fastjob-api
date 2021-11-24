@@ -15,7 +15,9 @@ export class RegisterContractorsHandler implements ICommandHandler<RegisterContr
   ) {}
 
   async execute(command: RegisterContractorCommand){
+
     let regiterContractorManager: RegisterUserTemplate = new RegisterContractorManager(command, this.contractorRepository, this.publisher);
     return regiterContractorManager.ProcessRegisterHandler();
+
   }
 }
