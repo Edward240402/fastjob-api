@@ -41,13 +41,13 @@ export class RegisterRatingValidator{
     }
     else{
       id = contract.contractor_id.value;
-      const contractor: ContractorTypeORM = await this.contractorRepository.createQueryBuilder().where("id = :id", { id }).getOne();
+      const contractor: ContractorTypeORM = await this.contractorRepository.createQueryBuilder().where("contractor_id = :id", { id }).getOne();
       if(contractor == null){
         notification.addError('Contractor not found', null);
       }
 
       id = contract.employee_id.value;
-      const employee: EmployeeTypeORM = await this.employeeRepository.createQueryBuilder().where("id = :id", { id }).getOne();
+      const employee: EmployeeTypeORM = await this.employeeRepository.createQueryBuilder().where("employee_id = :id", { id }).getOne();
       if(employee == null){
         notification.addError('Employee not found', null);
       }

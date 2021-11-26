@@ -1,5 +1,4 @@
-import { Column, Entity } from "typeorm";
-import { Unique } from "typeorm/browser";
+import { Column, Entity, Unique } from "typeorm";
 import { RatingIdTypeORM } from "./rating.id.typeorm";
 import { ContractIdTypeORM } from "../../../../../common/infrastructure/persistence/typeorm/entities/contract-id.typeorm";
 import { RateTypeORM } from "../../../../../common/infrastructure/persistence/typeorm/entities/rate.typeorm";
