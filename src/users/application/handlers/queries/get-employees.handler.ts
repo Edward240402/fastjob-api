@@ -23,7 +23,7 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
      FROM 
         employees
      ORDER BY
-        employee_id;`;
+        rate DESC;`;
     const ormEmployees = await manager.query(sql);
     if(ormEmployees.length <= 0){
       return [];

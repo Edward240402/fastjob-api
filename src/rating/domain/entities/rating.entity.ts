@@ -20,8 +20,8 @@ export class Rating extends AggregateRoot{
     const event = new RatingRegisteredEvent(
       this.id.getValue(),
       this.contractId.getValue(),
-      this.rate.getRate()
-    )
+      this.rate.getRate());
+    this.apply(event);
   }
 
   public changeId(id: RatingId) {

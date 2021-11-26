@@ -12,15 +12,17 @@ import { ContractorRegisteredHandler } from "./application/handlers/events/contr
 import { EmployeeRegisteredHandler } from "./application/handlers/events/employee-registered.handler";
 import { GetContractorsHandler } from "./application/handlers/queries/get-contractors.handler";
 import { GetEmployeesHandler } from "./application/handlers/queries/get-employees.handler";
+import { EmployeeRatedHandler } from "./application/handlers/events/employee-rated.handler";
+import { ContractTypeORM } from "../contracts/infrastructure/persistence/typeorm/entities/contract.typeorm";
 
 export const CommandHandlers = [RegisterContractorsHandler, RegisterEmployeeHandler];
-export const EventHandlers = [ContractorRegisteredHandler, EmployeeRegisteredHandler];
+export const EventHandlers = [ContractorRegisteredHandler, EmployeeRegisteredHandler, EmployeeRatedHandler];
 export const QueryHandlers = [GetContractorsHandler, GetEmployeesHandler];
 
 @Module({
   imports: [
     CqrsModule,
-    TypeOrmModule.forFeature([EmployeeTypeORM, ContractorTypeORM]),
+    TypeOrmModule.forFeature([EmployeeTypeORM, ContractorTypeORM, ContractTypeORM]),
   ],
   controllers: [UsersController],
   providers: [

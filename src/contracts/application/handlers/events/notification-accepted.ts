@@ -11,7 +11,6 @@ import { JobType } from "../../../../common/domain/value-objects/job-type.value"
 import { Result } from "typescript-result";
 import { AppNotification } from "../../../../common/application/app.notification";
 import { Contract } from "../../../domain/entities/contract.entity";
-import { RegisterContractRequestDto } from "../../dtos/request/register-contract-request.dto";
 import * as moment from "moment-timezone";
 import { RegisterContractCommand } from "../../commands/register-contract.command";
 import { ContractId } from "../../../domain/value-objects/contract-id.value";
@@ -23,8 +22,8 @@ import { ContractTypeORM } from "../../../infrastructure/persistence/typeorm/ent
 @EventsHandler(NotificationRegisteredEvent)
 export class NotificationAccepted implements IEventHandler<NotificationRegisteredEvent>{
   constructor(
-    @InjectRepository(ContractorTypeORM)
-    private contractRepository: Repository<ContractorTypeORM>,
+    @InjectRepository(ContractTypeORM)
+    private contractRepository: Repository<ContractTypeORM>,
 
     @InjectRepository(EmployeeTypeORM)
     private employeeRepository: Repository<EmployeeTypeORM>,
@@ -38,7 +37,7 @@ export class NotificationAccepted implements IEventHandler<NotificationRegistere
     private commandBus: CommandBus
   ) {}
 
-  async handle(event: NotificationRegisteredEvent){
+  async handle(event: NotificationRegisteredEvent) {
     if(event.state == "Accepted"){
       let employeeTypeORM: EmployeeTypeORM = await this.employeeRepository
         .createQueryBuilder()

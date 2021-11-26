@@ -7,6 +7,7 @@ import { AppNotification } from "../../../common/application/app.notification";
 import { RegisterContractResponseDto } from "../dtos/response/register-contract-response.dto";
 import { RegisterContractCommand } from "../commands/register-contract.command";
 import * as moment from 'moment-timezone';
+import { ContractState } from "../../domain/enums/contract-state";
 
 @Injectable()
 export class ContractsApplicationService{
@@ -29,7 +30,7 @@ export class ContractsApplicationService{
       registerContractRequestDto.contractorId,
       datetime,
       registerContractRequestDto.jobType,
-      "Accepted",
+      ContractState.FINISHED,
     );
 
     const contractId = await this.commandBus.execute(registerContractCommand);
@@ -40,7 +41,7 @@ export class ContractsApplicationService{
       datetime.toString(),
       "No established",
       registerContractRequestDto.jobType,
-      "Accepted"
+      ContractState.FINISHED
     );
     return Result.ok(registerContractResponseDto);
   }

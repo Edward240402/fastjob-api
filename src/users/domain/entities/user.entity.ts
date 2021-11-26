@@ -4,6 +4,7 @@ import { Name } from "../value-objects/name.value";
 import { Password } from "../value-objects/password.value";
 import { Age } from "../value-objects/age.value";
 import { Email } from "../value-objects/email.value";
+import { Rate } from "../../../rating/domain/value-objects/rate.value";
 
 export class User extends AggregateRoot{
   protected id: UserId;
@@ -28,6 +29,11 @@ export class User extends AggregateRoot{
   }
 
   public register(){}
+
+  public addRate(newRate: Rate){
+    this.rate = Number((((this.rate * this.numberOfRates) + newRate.getRate()) / (this.numberOfRates + 1)).toFixed(1));
+    this.numberOfRates++;
+  }
 
   public changeId(id: UserId) {
     this.id = id;
