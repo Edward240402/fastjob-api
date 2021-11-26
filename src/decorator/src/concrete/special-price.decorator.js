@@ -7,7 +7,7 @@ var SpecialPriceDecorator = /** @class */ (function () {
         this.discountAmount = 0.05;
     }
     SpecialPriceDecorator.prototype.calculate = function (input) {
-        console.log(this.constructor.name + " discount applied.");
+        console.log(this.constructor.name + " approved to reduce interest cost.");
         input = (input * (1 + this.discountAmount));
         return this.decorator.calculate(input);
     };

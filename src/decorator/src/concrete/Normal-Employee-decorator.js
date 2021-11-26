@@ -7,7 +7,7 @@ var NormalEmployeeDecorator = /** @class */ (function () {
         this.discountAmount = 0.1;
     }
     NormalEmployeeDecorator.prototype.calculate = function (input) {
-        console.log(this.constructor.name + " discount not applied.");
+        console.log(this.constructor.name + "  no approved to reduce interest cost.");
         input = (input * (1 - this.discountAmount));
         return this.decorator.calculate(input);
     };
