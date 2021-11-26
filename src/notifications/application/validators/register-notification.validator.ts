@@ -9,6 +9,7 @@ import { ContractorTypeORM } from '../../../users/infrastructure/persistence/typ
 import { PostTypeORM } from '../../../posts/infrastructure/persistence/typeorm/entities/post.typeorm'
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { NotificationState } from "../../domain/enums/notification-state";
 
 @Injectable()
 export class RegisterNotificationValidator {
@@ -33,7 +34,7 @@ export class RegisterNotificationValidator {
     if (state.length <= 0){
       notification.addError('State is required', null);
     }
-    if(state != "Pending" && state != "Accepted" && state != "Rejected"){
+    if(state != NotificationState.PENDING && state != NotificationState.ACCEPTED && state != NotificationState.REJECTED){
       notification.addError('Not valid state', null);
     }
 

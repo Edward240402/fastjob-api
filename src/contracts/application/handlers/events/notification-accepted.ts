@@ -18,6 +18,7 @@ import { DateTime } from "../../../../common/domain/value-objects/date-time.valu
 import { State } from "../../../domain/value-objects/state.value";
 import { ContractMapper } from "../../mapper/contract.mapper";
 import { ContractTypeORM } from "../../../infrastructure/persistence/typeorm/entities/contract.typeorm";
+import { NotificationState } from "../../../../notifications/domain/enums/notification-state";
 
 @EventsHandler(NotificationRegisteredEvent)
 export class NotificationAccepted implements IEventHandler<NotificationRegisteredEvent>{
@@ -38,7 +39,7 @@ export class NotificationAccepted implements IEventHandler<NotificationRegistere
   ) {}
 
   async handle(event: NotificationRegisteredEvent) {
-    if(event.state == "Accepted"){
+    if(event.state == NotificationState.ACCEPTED){
       let employeeTypeORM: EmployeeTypeORM = await this.employeeRepository
         .createQueryBuilder()
         .where("employee_id = :id")
@@ -80,7 +81,7 @@ export class NotificationAccepted implements IEventHandler<NotificationRegistere
       if(jobType.isFailure()){
         return 0;
       }
-      const stateResult: Result<AppNotification, State> = State.create("Accepted");
+      const stateResult: Result<AppNotification, State> = State.create(NotificationState.ACCEPTED);
       if(stateResult.isFailure()){
         return 0;
       }
@@ -90,7 +91,7 @@ export class NotificationAccepted implements IEventHandler<NotificationRegistere
         contractorId.getValue(),
         datetime,
         jobType.value.getJobType(),
-        "Accepted",
+        NotificationState.ACCEPTED,
       );
 
       const contractId = await this.commandBus.execute(registerContractCommand);

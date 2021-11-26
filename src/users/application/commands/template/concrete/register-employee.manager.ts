@@ -78,9 +78,7 @@ export class RegisterEmployeeManager extends RegisterUserTemplate{
     this.employee = userFactory.createUser(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0
       , this.yearsOfExperienceResult.value.getYearsOfExperience(), this.availabilityResult.value.getAvailability());
 
-    //this.employee = new Employee(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0
-    //  , this.yearsOfExperienceResult.value.getYearsOfExperience(), this.availabilityResult.value.getAvailability());
-    this.employeeTypeORM = EmployeeMapper.toTypeORM(this.employee);
+   this.employeeTypeORM = EmployeeMapper.toTypeORM(this.employee);
     this.employeeTypeORM = await this.employeeRepository.save(this.employeeTypeORM);
     if(this.employeeTypeORM == null){
       this.userId = 0;

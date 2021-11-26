@@ -59,7 +59,6 @@ export class RegisterContractorManager extends RegisterUserTemplate{
     const userFactory: UserFactory = UserFactoryMethod.getType(UserType.CONTRACTOR);
     this.contractor = userFactory.createUser(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0, null, null);
 
-    //this.contractor = new Contractor(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0);
     this.contractorTypeORM = ContractorMapper.toTypeORM(this.contractor);
     this.contractorTypeORM = await this.contractorRepository.save(this.contractorTypeORM);
     if(this.contractorTypeORM == null){

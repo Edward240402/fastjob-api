@@ -25,7 +25,6 @@ export class NotificationsApplicationService {
       registerNotificationRequestDto.contractorId,
       registerNotificationRequestDto.postId,
       registerNotificationRequestDto.state,
-
     );
 
     const notificationId = await this.commandBus.execute(registerNotificationCommand);

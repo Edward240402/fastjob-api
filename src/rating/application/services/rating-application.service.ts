@@ -21,7 +21,7 @@ export class RatingApplicationService{
 
   async register(registerRatingRequestDto: RegisterRatingRequestDto): Promise<Result<AppNotification, RegisterRatingResponseDto>>{
     const notification: AppNotification = await this.registerRatingValidator.validate(registerRatingRequestDto);
-    if(notification.hasErrors()){
+    if(notification.hasErrors()) {
       return Result.error(notification);
     }
 

@@ -9,6 +9,7 @@ import { RegisterContractorCommand } from "../commands/register-contractor.comma
 import { RegisterEmployeeRequestDto } from "../dtos/request/register-employee-request.dto";
 import { RegisterEmployeeResponseDto } from "../dtos/response/register-employee-response.dto";
 import { RegisterEmployeeCommand } from "../commands/register-employee.command";
+import { Availability } from "../../domain/enums/availability";
 
 @Injectable()
 export class UsersApplicationService{
@@ -60,7 +61,7 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.password,
       registerEmployeeRequestDto.age,
       registerEmployeeRequestDto.yearsOfExperience,
-      "None"
+      Availability.NONE
     );
 
     const employeeId = await this.commandBus.execute(registerEmployeeCommand);
@@ -72,7 +73,7 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.age,
       0, 0,
       registerEmployeeRequestDto.yearsOfExperience,
-      "None"
+      Availability.NONE
     );
     return Result.ok(registerEmployeeResponseDto);
   }

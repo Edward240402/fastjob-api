@@ -6,6 +6,7 @@ import { RegisterContractRequestDto } from "../dtos/request/register-contract-re
 import { AppNotification } from "../../../common/application/app.notification";
 import { EmployeeTypeORM } from "../../../users/infrastructure/persistence/typeorm/entities/employee.typeorm";
 import { ContractorTypeORM } from "../../../users/infrastructure/persistence/typeorm/entities/contractorTypeORM";
+import { ContractState } from "../../domain/enums/contract-state";
 
 @Injectable()
 export class RegisterContractValidator{
@@ -31,7 +32,7 @@ export class RegisterContractValidator{
     if (state.length <= 0){
       notification.addError('State is required', null);
     }
-    if(state != "Finished" && state != "Accepted" && state != "Canceled"){
+    if(state != ContractState.FINISHED && state != ContractState.ACCEPTED && state != ContractState.CANCELED){
       notification.addError('Not valid state', null);
     }
 
