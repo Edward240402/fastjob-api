@@ -4,7 +4,7 @@ import { NameTypeORM } from "./name.typeorm";
 import { EmailTypeORM } from "./email.typeorm";
 import { PasswordTypeORM } from "./password.typeorm";
 import { AgeTypeORM } from "./age.typeorm";
-import { RateTypeORM } from "./rate.typeorm";
+import { RateTypeORM } from "../../../../../common/infrastructure/persistence/typeorm/entities/rate.typeorm";
 import { NumberOfRatesTypeORM } from "./number.of.rates.typeorm";
 
 export class UserTypeORM {

@@ -2,7 +2,7 @@ import { NameTypeORM } from "../../infrastructure/persistence/typeorm/entities/n
 import { EmailTypeORM } from "../../infrastructure/persistence/typeorm/entities/email.typeorm";
 import { PasswordTypeORM } from "../../infrastructure/persistence/typeorm/entities/password.typeorm";
 import { AgeTypeORM } from "../../infrastructure/persistence/typeorm/entities/age.typeorm";
-import { RateTypeORM } from "../../infrastructure/persistence/typeorm/entities/rate.typeorm";
+import { RateTypeORM } from "../../../common/infrastructure/persistence/typeorm/entities/rate.typeorm";
 import { NumberOfRatesTypeORM } from "../../infrastructure/persistence/typeorm/entities/number.of.rates.typeorm";
 import { Employee } from "../../domain/entities/employee.entity";
 import { EmployeeTypeORM } from "../../infrastructure/persistence/typeorm/entities/employee.typeorm";
