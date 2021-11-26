@@ -27,6 +27,14 @@ export class RegisterContractValidator{
       notification.addError('Job Type is required', null);
     }
 
+    const state: string = registerContractRequestDto.state.trim();
+    if (state.length <= 0){
+      notification.addError('State is required', null);
+    }
+    if(state != "Finished" && state != "Accepted" && state != "Canceled"){
+      notification.addError('Not valid state', null);
+    }
+
     if(notification.hasErrors()){
       return notification;
     }

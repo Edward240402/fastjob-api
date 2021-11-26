@@ -30,7 +30,7 @@ export class ContractsApplicationService{
       registerContractRequestDto.contractorId,
       datetime,
       registerContractRequestDto.jobType,
-      ContractState.FINISHED,
+      registerContractRequestDto.state
     );
 
     const contractId = await this.commandBus.execute(registerContractCommand);
@@ -41,7 +41,7 @@ export class ContractsApplicationService{
       datetime.toString(),
       "No established",
       registerContractRequestDto.jobType,
-      ContractState.FINISHED
+      registerContractRequestDto.state
     );
     return Result.ok(registerContractResponseDto);
   }
