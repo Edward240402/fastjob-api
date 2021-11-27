@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, Res } from "@nestjs/common";
-import { Index } from "../application/services";
+import { TransactionsApplicationService } from "../application/services/transactions-application.service";
 import { QueryBus } from "@nestjs/cqrs";
 import { RegisterTransactionRequestDto } from "../application/dtos/request/register-transaction-request.dto";
 import { Result } from "typescript-result";
@@ -11,7 +11,7 @@ import { GetTransactionQuery } from "../application/queries/get-transaction.quer
 @Controller('transactions')
 export class TransactionsController {
   constructor(
-    private readonly transactionApplicationService: Index,
+    private readonly transactionApplicationService: TransactionsApplicationService,
     private readonly queryBus: QueryBus
   ) {}
 

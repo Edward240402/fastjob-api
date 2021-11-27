@@ -5,8 +5,6 @@ export class RegisterEmployeeRequestDto{
     public readonly password: string,
     public readonly age: number,
     public readonly yearsOfExperience: number,
-    public readonly typeOfAccount: string,
-    //public readonly rate: number,
-    //public readonly availability: string
+    public readonly typeOfAccount: string
   ) {}
 }

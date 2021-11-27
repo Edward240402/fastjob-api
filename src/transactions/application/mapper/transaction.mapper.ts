@@ -3,7 +3,7 @@ import { TransactionTypeorm } from '../../infrastructure/persistence/typeorm/ent
 import { TransactionIdTypeorm } from '../../infrastructure/persistence/typeorm/entities/transaction.id.typeorm';
 import { EmployeeIdTypeorm } from '../../../common/infrastructure/persistence/typeorm/entities/employee-id.typeorm';
 import { ContractorIdTypeorm } from '../../../common/infrastructure/persistence/typeorm/entities/contractor-id.typeorm';
-import { ContractIdTypeorm } from '../../../common/infrastructure/persistence/typeorm/entities/contract-id.typeorm';
+import { ContractIdTypeORM } from "../../../common/infrastructure/persistence/typeorm/entities/contract-id.typeorm";
 import { PaymentTypeORM } from '../../infrastructure/persistence/typeorm/entities/payment.typeorm';
 import { DiscountTypeORM } from '../../infrastructure/persistence/typeorm/entities/discount.typeorm';
 import { TotalTypeORM } from '../../infrastructure/persistence/typeorm/entities/total.typeorm';
@@ -13,7 +13,7 @@ export class TransactionMapper {
   public static toTypeORM(transaction: Transaction): TransactionTypeorm {
     const transactionTypeORM: TransactionTypeorm = new TransactionTypeorm();
     transactionTypeORM.id = TransactionIdTypeorm.from(transaction.getId().getValue());
-    transactionTypeORM.contract_id = ContractIdTypeorm.from(transaction.getContractId().getValue())
+    transactionTypeORM.contract_id = ContractIdTypeORM.from(transaction.getContractId().getValue())
     transactionTypeORM.employee_id = EmployeeIdTypeorm.from(transaction.getEmployeeId().getValue());
     transactionTypeORM.contractor_id = ContractorIdTypeorm.from(transaction.getContractorId().getValue());
     transactionTypeORM.payment = PaymentTypeORM.from(transaction.getPayment().getPayment());

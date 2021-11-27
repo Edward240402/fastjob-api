@@ -10,9 +10,10 @@ import { Paypal } from './paypal';
 import { NotificationApp } from './notificationApp';
 import { NotificationEmail } from './notificationEmail';
 import { NotificationSMS } from './notificationSMS';
+import { AccountType } from "../../domain/enums/account-type";
 
 @Injectable()
-export class Index {
+export class TransactionsApplicationService {
   constructor(
     private commandBus: CommandBus,
     private registerTransactionValidator: RegisterTransactionValidator
@@ -24,7 +25,7 @@ export class Index {
       return Result.error(notification);
     }
 
-    if(registerTransactionRequestDto.typeOfAccount==="VIP") {
+    if(registerTransactionRequestDto.typeOfAccount === AccountType.VIP) {
 
    const paypal = new Paypal();
    paypal.sendPayment(registerTransactionRequestDto.payment);
@@ -66,7 +67,7 @@ export class Index {
       return Result.ok(registerTransactionResponseDto);
     }
 
-    if(registerTransactionRequestDto.typeOfAccount==="NORMAL"){
+    if(registerTransactionRequestDto.typeOfAccount === AccountType.NORMAL){
 
       const paypal = new Paypal();
       paypal.sendPayment(registerTransactionRequestDto.payment);

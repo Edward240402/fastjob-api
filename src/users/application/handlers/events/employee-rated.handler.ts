@@ -18,6 +18,7 @@ import { Availability } from "../../../domain/value-objects/availability.value";
 import { Result } from "typescript-result";
 import { AppNotification } from "../../../../common/application/app.notification";
 import { EmployeeMapper } from "../../mappers/employee.mapper";
+import { TypeOfAccount } from "../../../domain/value-objects/type-of-account.value";
 
 @EventsHandler(RatingRegisteredEvent)
 export class EmployeeRatedHandler implements IEventHandler<RatingRegisteredEvent>{
@@ -80,12 +81,17 @@ export class EmployeeRatedHandler implements IEventHandler<RatingRegisteredEvent
       return;
     }
 
+    const typeOfAccountResult: Result<AppNotification, TypeOfAccount> = TypeOfAccount.create(employeeTypeORM.typeOfAccount.typeOfAccount);
+    if(typeOfAccountResult.isFailure()){
+      return;
+    }
+
     const id: UserId = UserId.create(employeeTypeORM.id.value);
     const rate: number = employeeTypeORM.rate.rate;
     const numberOfRates: number = employeeTypeORM.numberOfRates.numberOfRates;
 
     let employee: Employee = new Employee(id, nameResult.value, emailResult.value, passwordResult.value, ageResult.value,
-      rate, numberOfRates, yearsOfExperienceResult.value.getYearsOfExperience(), availabilityResult.value.getAvailability());
+      rate, numberOfRates, yearsOfExperienceResult.value.getYearsOfExperience(), availabilityResult.value.getAvailability(), typeOfAccountResult.value);
     const newRate: Result<AppNotification, Rate> = Rate.create(event.rate);
     if(newRate.isFailure()){
       console.log('New Rate error');

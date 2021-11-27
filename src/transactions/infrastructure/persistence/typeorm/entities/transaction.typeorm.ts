@@ -3,7 +3,7 @@ import { TransactionIdTypeorm } from './transaction.id.typeorm';
 import { PaymentTypeORM } from './payment.typeorm';
 import { EmployeeIdTypeorm } from '../../../../../common/infrastructure/persistence/typeorm/entities/employee-id.typeorm';
 import { ContractorIdTypeorm } from '../../../../../common/infrastructure/persistence/typeorm/entities/contractor-id.typeorm';
-import { ContractIdTypeorm } from '../../../../../common/infrastructure/persistence/typeorm/entities/contract-id.typeorm';
+import { ContractIdTypeORM } from '../../../../../common/infrastructure/persistence/typeorm/entities/contract-id.typeorm';
 import { TypeOfAccountTypeORM } from '../../../../../users/infrastructure/persistence/typeorm/entities/typeOfAccount.typeorm';
 import { DiscountTypeORM } from './discount.typeorm';
 import { TotalTypeORM } from './total.typeorm';
@@ -14,8 +14,8 @@ export class TransactionTypeorm {
   @Column(type => TransactionIdTypeorm, { prefix: false })
   public id: TransactionIdTypeorm;
 
-  @Column(type => ContractIdTypeorm, { prefix: false })
-  public contract_id: ContractIdTypeorm;
+  @Column(type => ContractIdTypeORM, { prefix: false })
+  public contract_id: ContractIdTypeORM;
 
   @Column(type => EmployeeIdTypeorm, { prefix: false })
   public employee_id: EmployeeIdTypeorm;

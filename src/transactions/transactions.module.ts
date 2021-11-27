@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Index } from "./application/services";
+import { TransactionsApplicationService } from "./application/services/transactions-application.service";
 import { RegisterTransactionValidator } from "./application/validators/register-transaction.validator";
 import { TransactionsController } from "./api/transactions.controller";
 import { TransactionTypeorm } from "./infrastructure/persistence/typeorm/entities/transaction.typeorm";
@@ -29,7 +29,7 @@ export const QueryHandlers = [GetTransactionsHandler];
   ],
   controllers: [TransactionsController],
   providers: [
-    Index,
+    TransactionsApplicationService,
     RegisterTransactionValidator,
     ...CommandHandlers,
     ...EventHandlers,
