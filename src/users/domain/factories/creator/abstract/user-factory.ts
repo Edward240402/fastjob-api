@@ -4,6 +4,7 @@ import { Name } from "../../../value-objects/name.value";
 import { Email } from "../../../value-objects/email.value";
 import { Password } from "../../../value-objects/password.value";
 import { Age } from "../../../value-objects/age.value";
+import { TypeOfAccount } from '../../../value-objects/type-of-account.value';
 
 export abstract class UserFactory {
   protected constructor() {
@@ -11,5 +12,5 @@ export abstract class UserFactory {
 
   //public abstract createUser(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number): User;
   public abstract createUser(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number,
-                             yearsOfExperience: number, availability: string): User;
+                             yearsOfExperience: number, availability: string,typeOfAccount: TypeOfAccount): User;
 }

@@ -18,6 +18,7 @@ import { EmployeeMapper } from "../../../mappers/employee.mapper";
 import { UserFactory } from "../../../../domain/factories/creator/abstract/user-factory";
 import { UserFactoryMethod } from "../../../../domain/factories/factory/UserFactoryMethod";
 import { UserType } from "../../../../domain/enums/UserType";
+import { TypeOfAccount } from '../../../../domain/value-objects/type-of-account.value';
 
 export class RegisterEmployeeManager extends RegisterUserTemplate{
   private employeeCommand: RegisterEmployeeCommand;
@@ -25,7 +26,7 @@ export class RegisterEmployeeManager extends RegisterUserTemplate{
   private employeeTypeORM: EmployeeTypeORM;
   private yearsOfExperienceResult: Result<AppNotification, YearsOfExperience>;
   private availabilityResult: Result<AppNotification, Availability>;
-
+  private typeOfAccountResult: Result<AppNotification, TypeOfAccount>;
   constructor(command: RegisterEmployeeCommand,
               @InjectRepository(EmployeeTypeORM) employeeRepository: Repository<EmployeeTypeORM>,
               publisher: EventPublisher)
@@ -74,11 +75,17 @@ export class RegisterEmployeeManager extends RegisterUserTemplate{
       return;
     }
 
+    this.typeOfAccountResult = TypeOfAccount.create(this.employeeCommand.typeOfAccount);
+    if(this.typeOfAccountResult.isFailure()){
+      this.userId = 0;
+      return;
+    }
+
     const userFactory: UserFactory = UserFactoryMethod.getType(UserType.EMPLOYEE);
     this.employee = userFactory.createUser(UserId.create(0), this.nameResult.value, this.emailResult.value, this.passwordResult.value, this.ageResult.value, 0, 0
-      , this.yearsOfExperienceResult.value.getYearsOfExperience(), this.availabilityResult.value.getAvailability());
+      , this.yearsOfExperienceResult.value.getYearsOfExperience(), this.availabilityResult.value.getAvailability(),this.typeOfAccountResult.value);
 
-   this.employeeTypeORM = EmployeeMapper.toTypeORM(this.employee);
+    this.employeeTypeORM = EmployeeMapper.toTypeORM(this.employee);
     this.employeeTypeORM = await this.employeeRepository.save(this.employeeTypeORM);
     if(this.employeeTypeORM == null){
       this.userId = 0;

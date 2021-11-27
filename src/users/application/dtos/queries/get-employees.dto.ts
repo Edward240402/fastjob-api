@@ -8,4 +8,5 @@ export class GetEmployeesDto{
   public numberOfRates: number;
   public yearsOfExperience: number;
   public availability: string;
+  public typeOfAccount: string
 }

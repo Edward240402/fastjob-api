@@ -61,7 +61,8 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.password,
       registerEmployeeRequestDto.age,
       registerEmployeeRequestDto.yearsOfExperience,
-      Availability.NONE
+      Availability.NONE,
+      registerEmployeeRequestDto.typeOfAccount,
     );
 
     const employeeId = await this.commandBus.execute(registerEmployeeCommand);
@@ -73,7 +74,8 @@ export class UsersApplicationService{
       registerEmployeeRequestDto.age,
       0, 0,
       registerEmployeeRequestDto.yearsOfExperience,
-      Availability.NONE
+      Availability.NONE,
+      registerEmployeeRequestDto.typeOfAccount,
     );
     return Result.ok(registerEmployeeResponseDto);
   }

@@ -10,12 +10,14 @@ import { Repository } from "typeorm";
 import { EventPublisher } from "@nestjs/cqrs";
 import { EmployeeTypeORM } from "../../../../users/infrastructure/persistence/typeorm/entities/employee.typeorm";
 
+
 export abstract class RegisterUserTemplate{
   protected nameResult: Result<AppNotification, Name>;
   protected emailResult: Result<AppNotification, Email>;
   protected passwordResult: Result<AppNotification, Password>;
   protected ageResult: Result<AppNotification, Age>;
   protected userId: number;
+
   @InjectRepository(ContractorTypeORM)
   protected contractorRepository: Repository<ContractorTypeORM>;
   @InjectRepository(EmployeeTypeORM)

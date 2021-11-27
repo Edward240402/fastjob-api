@@ -1,7 +1,7 @@
 import { Result } from "typescript-result";
 import { AppNotification } from "../../../common/application/app.notification";
 
-export class Password{
+export class Password {
   private readonly password: string;
   private static MAX_LENGTH: number = 25;
   private static MIN_LENGTH: number = 8;

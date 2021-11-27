@@ -19,7 +19,8 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
       rate,
       number_of_rates,
       years_of_experience,
-      availability
+      availability,
+      type_of_account
      FROM 
         employees
      ORDER BY
@@ -39,6 +40,7 @@ export class GetEmployeesHandler implements IQueryHandler<GetEmployeesQuery> {
       employeeDto.numberOfRates = ormEmployee.number_of_rates;
       employeeDto.yearsOfExperience = ormEmployee.years_of_experience;
       employeeDto.availability = ormEmployee.availability;
+      employeeDto.typeOfAccount = ormEmployee.type_of_account;
       return employeeDto;
     });
     return employees;

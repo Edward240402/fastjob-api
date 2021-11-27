@@ -31,6 +31,7 @@ export class RegisterNotificationValidator {
     const notification: AppNotification = new AppNotification();
 
     const state: string = registerNotificationRequestDto.state.trim();
+
     if (state.length <= 0){
       notification.addError('State is required', null);
     }

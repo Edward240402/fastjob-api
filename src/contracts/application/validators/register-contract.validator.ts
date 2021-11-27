@@ -51,7 +51,7 @@ export class RegisterContractValidator{
     if(contractor == null){
       notification.addError('Contractor not found', null);
     }
-
+//agregar columa de costo. haccer bounded contetx de payments
     return notification;
   }
 }

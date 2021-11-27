@@ -5,8 +5,9 @@ import { Password } from "../value-objects/password.value";
 import { Age } from "../value-objects/age.value";
 import { Email } from "../value-objects/email.value";
 import { Rate } from "../../../rating/domain/value-objects/rate.value";
+import { TypeOfAccount } from '../value-objects/type-of-account.value';
 
-export class User extends AggregateRoot{
+export class User extends AggregateRoot {
   protected id: UserId;
   protected name: Name;
   protected email: Email;
@@ -16,6 +17,7 @@ export class User extends AggregateRoot{
   protected numberOfRates: number;
   protected yearsOfExperience: number;
   protected availability: string;
+  protected typeOfAccount: TypeOfAccount;
 
   public constructor(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number) {
     super();
@@ -30,32 +32,32 @@ export class User extends AggregateRoot{
 
   public register(){}
 
+
   public addRate(newRate: Rate){
     this.rate = Number((((this.rate * this.numberOfRates) + newRate.getRate()) / (this.numberOfRates + 1)).toFixed(1));
     this.numberOfRates++;
   }
-
   public changeId(id: UserId) {
     this.id = id;
   }
 
-  public getId(): UserId{
+  public getId(): UserId {
     return this.id;
   }
 
-  public getName(): Name{
+  public getName(): Name {
     return this.name;
   }
 
-  public getEmail(): Email{
+  public getEmail(): Email {
     return this.email;
   }
 
-  public getPassword(): Password{
+  public getPassword(): Password {
     return this.password;
   }
 
-  public getAge(): Age{
+  public getAge(): Age {
     return this.age;
   }
 
@@ -63,7 +65,7 @@ export class User extends AggregateRoot{
     return this.rate;
   }
 
-  public getNumberOfRates(): number{
+  public getNumberOfRates(): number {
     return this.numberOfRates;
   }
 
@@ -73,5 +75,8 @@ export class User extends AggregateRoot{
 
   public getAvailability(): string {
     return this.availability;
+  }
+  public getTypeOfAccount(): TypeOfAccount {
+    return this.typeOfAccount;
   }
 }

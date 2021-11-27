@@ -62,6 +62,7 @@ export class NotificationAccepted implements IEventHandler<NotificationRegistere
 
       let postTypeORM: PostTypeORM = await this.postRepository
         .createQueryBuilder()
+
         .where("id = :id")
         .setParameter("id", Number(event.postId))
         .getOne();
@@ -81,6 +82,7 @@ export class NotificationAccepted implements IEventHandler<NotificationRegistere
       if(jobType.isFailure()){
         return 0;
       }
+
       const stateResult: Result<AppNotification, State> = State.create(NotificationState.ACCEPTED);
       if(stateResult.isFailure()){
         return 0;

@@ -6,16 +6,15 @@ import { Password } from "../value-objects/password.value";
 import { Age } from "../value-objects/age.value";
 import { EmployeeRegisteredEvent } from "../events/employee-registered.event";
 import { UserInterface } from "../factories/product/user-interface";
+import { TypeOfAccount } from '../value-objects/type-of-account.value';
 
 export class Employee extends User implements UserInterface{
-  //private yearsOfExperience: number;
-  //private availability: string;
-
   public constructor(id: UserId, name: Name, email: Email, password: Password, age: Age, rate: number, numberOfRates: number,
-                     yearsOfExperience: number, availability: string) {
+                     yearsOfExperience: number, availability: string, typeofAccount: TypeOfAccount) {
     super(id, name, email, password, age, rate, numberOfRates);
     this.yearsOfExperience = yearsOfExperience;
     this.availability = availability;
+    this.typeOfAccount = typeofAccount;
   }
 
   public register() {
@@ -26,15 +25,7 @@ export class Employee extends User implements UserInterface{
       this.password.getPassword(),
       this.age.getAge(),
       this.rate,
-      this.numberOfRates, this.yearsOfExperience, this.availability);
+      this.numberOfRates, this.yearsOfExperience, this.availability, this.typeOfAccount.getTypeOfAccount(),);
     this.apply(event);
   }
-
-  //public getYearsOfExperience(): number {
-  //  return this.yearsOfExperience;
-  //}
-
-  //public getAvailability(): string {
-  //  return this.availability;
-  //}
 }
