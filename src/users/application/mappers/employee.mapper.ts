@@ -9,8 +9,9 @@ import { EmployeeTypeORM } from "../../infrastructure/persistence/typeorm/entiti
 import { YearsOfExperienceTypeORM } from "../../infrastructure/persistence/typeorm/entities/years.of.experience.typeorm";
 import { AvailabilityTypeORM } from "../../infrastructure/persistence/typeorm/entities/availabilityTypeORM";
 import { EmployeeIdTypeORM } from "../../infrastructure/persistence/typeorm/entities/employee.id.typeorm";
+import { TypeOfAccountTypeORM } from '../../infrastructure/persistence/typeorm/entities/typeOfAccount.typeorm';
 
-export class EmployeeMapper{
+export class EmployeeMapper {
   public static toTypeORM(employee: Employee): EmployeeTypeORM {
     const employeeTypeORM: EmployeeTypeORM = new EmployeeTypeORM();
     employeeTypeORM.id = EmployeeIdTypeORM.from(employee.getId().getValue());
@@ -22,6 +23,7 @@ export class EmployeeMapper{
     employeeTypeORM.numberOfRates = NumberOfRatesTypeORM.from(employee.getNumberOfRates());
     employeeTypeORM.yearsOfExperience = YearsOfExperienceTypeORM.from(employee.getYearsOfExperience());
     employeeTypeORM.availability = AvailabilityTypeORM.from(employee.getAvailability());
+    employeeTypeORM.typeOfAccount = TypeOfAccountTypeORM.from(employee.getTypeOfAccount().getTypeOfAccount());
     return employeeTypeORM;
   }
 }

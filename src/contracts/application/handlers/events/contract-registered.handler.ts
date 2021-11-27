@@ -7,7 +7,7 @@ export class ContractRegisteredHandler implements IEventHandler<ContractRegister
   constructor() {}
 
   handle(event: ContractRegisteredEvent) {
-    console.log('handle logic for ContractRegisteredEvent');
+    console.log('handle logic for TransactionRegisteredEvent');
     console.log(event);
   }
 }

@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { GetContractsQuery } from "../../quieries/get-contracts.query";
+import { GetContractsQuery } from "../../queries/get-contracts.query";
 import { getManager } from "typeorm";
 import { GetContractsDto } from "../../dtos/queries/get-contracts.dto";
 

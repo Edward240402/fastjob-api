@@ -17,7 +17,7 @@ export class State{
     let notification: AppNotification = new AppNotification();
     state = (state ?? "").trim();
     if(state === ""){
-      notification.addError('Job Type is required', null);
+      notification.addError('State is required', null);
     }
     if(state.length > this.MAX_LENGTH) {
       notification.addError('The maximum length of a State is ' + this.MAX_LENGTH + ' characters including spaces', null);

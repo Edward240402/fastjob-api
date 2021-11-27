@@ -1,6 +1,6 @@
 import * as moment from 'moment-timezone';
 import { Result } from "typescript-result";
-import { AppNotification } from "../../../common/application/app.notification";
+import { AppNotification } from "../../application/app.notification";
 
 export class DateTime {
   private readonly datetime: Date;

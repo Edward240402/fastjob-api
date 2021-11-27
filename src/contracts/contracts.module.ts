@@ -11,16 +11,20 @@ import { GetContractsHandler } from "./application/handlers/queries/get-contract
 import { UsersModule } from "../users/users.module";
 import { EmployeeTypeORM } from "../users/infrastructure/persistence/typeorm/entities/employee.typeorm";
 import { ContractorTypeORM } from "../users/infrastructure/persistence/typeorm/entities/contractorTypeORM";
+import { NotificationAccepted } from "./application/handlers/events/notification-accepted";
+import { PostsModule } from "../posts/posts.module";
+import { PostTypeORM } from "../posts/infrastructure/persistence/typeorm/entities/post.typeorm";
 
 export const CommandHandlers = [RegisterContractHandler];
-export const EventHandlers = [ContractRegisteredHandler];
+export const EventHandlers = [ContractRegisteredHandler, NotificationAccepted];
 export const QueryHandlers = [GetContractsHandler];
 
 @Module({
   imports: [
     CqrsModule,
     UsersModule,
-    TypeOrmModule.forFeature([ContractTypeORM, EmployeeTypeORM, ContractorTypeORM]),
+    PostsModule,
+    TypeOrmModule.forFeature([ContractTypeORM, EmployeeTypeORM, ContractorTypeORM, PostTypeORM]),
   ],
   controllers: [ContractsController],
   providers: [

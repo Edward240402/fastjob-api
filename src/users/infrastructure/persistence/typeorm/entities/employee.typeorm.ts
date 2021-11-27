@@ -9,6 +9,7 @@ import { AgeTypeORM } from "./age.typeorm";
 import { RateTypeORM } from "./rate.typeorm";
 import { NumberOfRatesTypeORM } from "./number.of.rates.typeorm";
 import { EmployeeIdTypeORM } from "./employee.id.typeorm";
+import { TypeOfAccountTypeORM } from './typeOfAccount.typeorm';
 
 @Entity('employees')
 @Unique('UQ_employees_employee_id', ['id.value'])
@@ -39,4 +40,7 @@ export class EmployeeTypeORM {
 
   @Column(type => AvailabilityTypeORM, {prefix: false})
   public availability: AvailabilityTypeORM;
+
+  @Column(type => TypeOfAccountTypeORM, {prefix: false})
+  public typeOfAccount: TypeOfAccountTypeORM;
 }
